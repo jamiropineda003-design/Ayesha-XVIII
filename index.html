@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>A Decade and Eight | Ayesha Jaylhyn's 18th Birthday</title>
+  <meta name="description" content="You are invited to celebrate Ayesha Jaylhyn's 18th birthday. June 21, 2026 at Lolita's Pavilion & Resort, San Mateo, Isabela.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Tenor+Sans&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --cream: #FAF6EF;
+      --cream-dark: #F2EAD8;
+      --parchment: #EDE3CE;
+      --gold: #C4995A;
+      --gold-light: #D9BC8C;
+      --gold-pale: #F0E3C4;
+      --gold-dark: #9A7340;
+      --bark: #2A1F14;
+      --bark-mid: #4A3825;
+      --bark-light: #7A6248;
+      --muted: #A89070;
+      --sage: #6B7A5E;
+      --blush: #E8D5C0;
+      --nude: #D4B896;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', system-ui, sans-serif;
+      --display: 'Tenor Sans', serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--bark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== PRELOADER ===== */
+    #preloader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--bark);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: opacity 0.9s ease, visibility 0.9s ease;
+    }
+    #preloader.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .pre-shimmer {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(196,153,90,0.06) 50%, transparent 60%);
+      background-size: 200% 200%;
+      animation: preShimmer 3s linear infinite;
+    }
+    @keyframes preShimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .pre-petals { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .pre-petal {
+      position: absolute;
+      width: 6px; height: 10px;
+      background: rgba(196,153,90,0.3);
+      border-radius: 50% 50% 50% 0;
+      animation: petalFall linear infinite;
+    }
+    @keyframes petalFall {
+      0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.6; }
+      100% { transform: translateY(110vh) rotate(540deg); opacity: 0; }
+    }
+
+    .pre-content {
+      position: relative; z-index: 10;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      padding: 0 2rem;
+    }
+    .pre-ornament {
+      width: 48px; height: 48px;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+    .pre-title {
+      font-family: var(--serif);
+      color: var(--gold-light);
+      font-size: clamp(1.4rem, 6vw, 2.2rem);
+      letter-spacing: 0.15em;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.5s forwards;
+    }
+    .pre-sub {
+      font-family: var(--sans);
+      color: var(--muted);
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.8s forwards;
+    }
+    .pre-tap {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      border: 1px solid rgba(196,153,90,0.4);
+      padding: 0.6rem 1.5rem;
+      border-radius: 999px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 1.5s forwards, tapPulse 2s ease 2s infinite;
+    }
+    @keyframes tapPulse {
+      0%,100% { transform: scale(1); border-color: rgba(196,153,90,0.4); }
+      50%      { transform: scale(1.03); border-color: rgba(196,153,90,0.8); }
+    }
+    .pre-progress {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: rgba(196,153,90,0.1);
+    }
+    .pre-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      width: 0%; transition: width 0.08s linear;
+    }
+
+    /* ===== NAV ===== */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.25rem;
+      transition: all 0.4s ease;
+    }
+    #nav.scrolled {
+      background: rgba(250,246,239,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(196,153,90,0.15);
+      padding: 0.75rem 1.25rem;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-light);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+    #nav.scrolled .nav-logo { color: var(--gold-dark); }
+    .nav-hamburger {
+      display: flex; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer;
+      padding: 6px; border-radius: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--gold-light);
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+    #nav.scrolled .nav-hamburger span { background: var(--gold-dark); }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-menu {
+      position: fixed; inset: 0; z-index: 490;
+      background: var(--bark);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 2.5rem;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: all 0.4s ease;
+    }
+    .nav-menu.open { opacity: 1; visibility: visible; pointer-events: all; }
+    .nav-menu a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      font-style: italic;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover { color: var(--gold-light); }
+    .nav-menu-date {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #1C140D 0%, #2A1F14 45%, #1A150F 100%);
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 20%, rgba(196,153,90,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(107,122,94,0.06) 0%, transparent 55%);
+    }
+    .hero-grain {
+      position: absolute; inset: 0; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .hero-photo {
+      position: absolute; inset: 0; z-index: 2;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .hero-photo img.loaded { opacity: 0.22; }
+    .hero-content {
+      position: relative; z-index: 10;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      padding: 0 1.5rem;
+      max-width: 480px; margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+    .hero-monogram {
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: scaleIn 1s ease 0.5s forwards;
+    }
+    .hero-monogram svg { width: 56px; height: 56px; }
+    @media (min-width: 640px) { .hero-monogram svg { width: 72px; height: 72px; } }
+    .hero-title {
+      font-family: var(--serif);
+      color: var(--cream);
+      font-size: clamp(2.4rem, 11vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.6s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      color: var(--nude);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.8s forwards;
+    }
+    .hero-date {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 1s forwards;
+    }
+    .hero-cta {
+      opacity: 0;
+      animation: fadeUp 0.7s ease 1.2s forwards;
+    }
+    .hero-cta a {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid rgba(196,153,90,0.5);
+      padding: 0.75rem 1.75rem;
+      border-radius: 999px;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      background: rgba(196,153,90,0.06);
+    }
+    .hero-cta a:hover {
+      background: var(--gold);
+      color: var(--bark);
+      border-color: var(--gold);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.4rem;
+      opacity: 0; z-index: 10;
+      animation: fadeIn 0.6s ease 1.8s forwards;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 28px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollBounce 1.6s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%,100% { transform: scaleY(0.3); transform-origin: top; }
+      50%      { transform: scaleY(1); transform-origin: top; }
+    }
+    .hero-scroll span {
+      font-size: 0.45rem;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ===== SECTION BASE ===== */
+    .section {
+      padding: 4rem 1.25rem;
+      max-width: 72rem; margin: 0 auto;
+    }
+    @media (min-width: 640px)  { .section { padding: 6rem 2rem; } }
+    @media (min-width: 1024px) { .section { padding: 7rem 3rem; } }
+
+    .section-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 7vw, 3rem);
+      font-weight: 400;
+      color: var(--bark);
+      line-height: 1.2;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-header { text-align: center; margin-bottom: 2.5rem; }
+    @media (min-width: 640px) { .section-header { margin-bottom: 3.5rem; } }
+
+    /* ===== ORNAMENT DIVIDER ===== */
+    .ornament-divider {
+      display: flex; align-items: center;
+      gap: 1rem; padding: 2.5rem 1.25rem;
+      max-width: 480px; margin: 0 auto;
+    }
+    .ornament-divider .line {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,153,90,0.4));
+    }
+    .ornament-divider .line:last-child {
+      background: linear-gradient(90deg, rgba(196,153,90,0.4), transparent);
+    }
+    .ornament-divider svg { width: 24px; height: 24px; flex-shrink: 0; }
+
+    /* ===== INVITATION ===== */
+    #invitation {
+      padding: 0 1.25rem 4rem;
+      max-width: 480px; margin: 0 auto;
+    }
+    .inv-box {
+      position: relative;
+      background: linear-gradient(145deg, var(--cream), var(--cream-dark));
+      border: 1px solid rgba(196,153,90,0.2);
+      border-radius: 1.5rem;
+      padding: 2.5rem 1.75rem;
+      overflow: hidden;
+    }
+    .inv-box::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(196,153,90,0.08) 0%, transparent 60%);
+    }
+    .inv-corner {
+      position: absolute; width: 28px; height: 28px;
+      border-color: rgba(196,153,90,0.35); border-style: solid;
+    }
+    .inv-corner.tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+    .inv-corner.tr { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
+    .inv-corner.bl { bottom: 12px; left: 12px; border-width: 0 0 1px 1px; }
+    .inv-corner.br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+    .inv-content { position: relative; z-index: 1; text-align: center; }
+    .inv-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.6rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem; display: block;
+    }
+    .inv-deco {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 1.5rem;
+    }
+    .inv-body {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      color: var(--bark-mid);
+      line-height: 2; font-style: italic;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+    .inv-name {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 9vw, 3rem);
+      color: var(--gold);
+      font-weight: 400; line-height: 1.1;
+      margin: 1.5rem 0;
+    }
+    .inv-closing {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--sage);
+      line-height: 1.8;
+      letter-spacing: 0.03em;
+    }
+    .inv-seal {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #C47050, #8B4220);
+      display: flex; align-items: center; justify-content: center;
+      margin: 1.75rem auto 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .inv-seal span {
+      font-family: var(--serif);
+      color: var(--cream);
+      font-size: 0.9rem; font-style: italic;
+    }
+
+    /* ===== MUSIC PLAYER ===== */
+    #music-player {
+      position: relative;
+      background:
+        linear-gradient(rgba(26, 15, 8, 0.65), rgba(26, 15, 8, 0.65)),
+        url('debutant/7.jpg') center 20% / cover no-repeat;
+      padding: 5rem 1.5rem;
+    }
+    .music-card {
+      max-width: 380px; margin: 0 auto;
+      border-radius: 2rem;
+      padding: 2rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    .music-disc-wrap {
+      display: flex; justify-content: center;
+      margin: 0.5rem 0 1.25rem; cursor: pointer;
+    }
+    .music-disc {
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background-image: url('images/disk-Photoroom.png');
+      background-size: cover; background-position: center;
+      background-color: var(--bark-mid);
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+      animation: spinDisc 0s linear infinite;
+      animation-play-state: paused;
+    }
+    @media (min-width: 480px) { .music-disc { width: 170px; height: 170px; } }
+    .music-disc:hover { box-shadow: 0 0 0 6px rgba(196,153,90,0.35); }
+    .music-disc.playing {
+      animation: spinDisc 5s linear infinite;
+      animation-play-state: running;
+    }
+    @keyframes spinDisc { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .music-status {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.6rem; margin-top: 0.5rem;
+    }
+    .music-pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold);
+      animation: pulseDot 1.4s ease infinite;
+    }
+    @keyframes pulseDot {
+      0%,100% { opacity: 0.3; transform: scale(0.7); }
+      50%      { opacity: 1; transform: scale(1.2); }
+    }
+    .music-hint {
+      font-size: 0.72rem; color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== SIGNATURE GALLERY ===== */
+    #signature-gallery {
+      position: relative;
+      background: #F5EFE4;
+      padding: 4rem 1.5rem;
+      overflow: hidden;
+    }
+    .signature-grain {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+    .signature-container {
+      position: relative;
+      max-width: 500px;
+      margin: 0 auto;
+      z-index: 2;
+    }
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .signature-masterpiece {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto 1.5rem;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      aspect-ratio: 4/5;
+      border-radius: 16px;
+    }
+    .signature-masterpiece img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .signature-masterpiece:hover img { transform: scale(1.03); }
+    .signature-masterpiece-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+      color: #c4a47c;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      font-weight: 300;
+    }
+    @media (min-width: 1024px) {
+      .signature-masterpiece-caption {
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+      .signature-masterpiece:hover .signature-masterpiece-caption { transform: translateY(0); }
+      .signature-masterpiece:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.45);
+      }
+    }
+    .signature-strip-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 0 auto;
+      max-width: 380px;
+    }
+    .signature-strip-item {
+      flex: 1;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      aspect-ratio: 3/4;
+      border-radius: 12px;
+    }
+    .strip-inner {
+      position: relative;
+      width: 100%; height: 100%;
+      overflow: hidden;
+    }
+    .signature-strip-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      filter: grayscale(30%);
+      display: block;
+    }
+    .signature-strip-item:hover img {
+      transform: scale(1.08);
+      filter: grayscale(0%);
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .signature-strip-item img { filter: grayscale(0%); }
+      .signature-masterpiece-caption { transform: translateY(0); opacity: 0.9; }
+    }
+    @media (min-width: 1024px) {
+      .signature-strip-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+      }
+    }
+    .strip-number {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: #c4a47c;
+      padding: 0.5rem;
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      font-family: monospace;
+    }
+    .signature-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(196,164,124,0.3);
+    }
+    .signature-footer span {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      color: #8b7355;
+      text-transform: uppercase;
+      font-family: var(--sans);
+    }
+
+    /* ===== LIGHTBOX ===== */
+    #lightbox {
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(20,14,8,0.96);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    #lightbox.open { opacity: 1; visibility: visible; pointer-events: all; }
+    .lightbox-img-wrap {
+      position: relative;
+      max-width: min(90vw, 600px);
+      max-height: 88vh;
+    }
+    .lightbox-img-wrap img {
+      max-width: 100%; max-height: 88vh;
+      object-fit: contain;
+      border-radius: 0.75rem;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+      display: block;
+    }
+    .lightbox-close {
+      position: absolute; top: -2.5rem; right: 0;
+      background: none; border: none; cursor: pointer;
+      color: var(--gold-light); font-size: 1.4rem; line-height: 1;
+      padding: 0.25rem 0.5rem;
+    }
+    .lightbox-prev, .lightbox-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(196,153,90,0.2);
+      border: 1px solid rgba(196,153,90,0.3);
+      color: var(--gold-light);
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem;
+      transition: background 0.3s;
+    }
+    .lightbox-prev { left: -3rem; }
+    .lightbox-next { right: -3rem; }
+    .lightbox-prev:hover, .lightbox-next:hover { background: rgba(196,153,90,0.45); }
+    @media (max-width: 540px) {
+      .lightbox-prev { left: 0.5rem; }
+      .lightbox-next { right: 0.5rem; }
+    }
+
+    /* ===== DETAILS ===== */
+    #details { background: var(--cream); }
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 480px) { .details-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px) { .details-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .detail-card {
+      position: relative;
+      background: white;
+      border: 1px solid rgba(196,153,90,0.15);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .detail-card:active { transform: scale(0.98); }
+    @media (hover: hover) {
+      .detail-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(42,31,20,0.08); }
+    }
+    .detail-card-accent {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      transform: scaleX(0); transition: transform 0.4s ease;
+    }
+    @media (hover: hover) { .detail-card:hover .detail-card-accent { transform: scaleX(1); } }
+    .detail-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--gold-pale);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .detail-icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--gold-dark); fill: none; stroke-width: 1.5;
+    }
+    .detail-label {
+      font-size: 0.55rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 600; margin-bottom: 0.5rem; display: block;
+    }
+    .detail-value {
+      font-family: var(--serif);
+      font-size: 1.05rem; color: var(--bark);
+      font-weight: 500; line-height: 1.5;
+      white-space: pre-line; margin-bottom: 0.5rem;
+    }
+    .detail-sub {
+      font-size: 0.72rem; color: var(--muted);
+      border-top: 1px solid rgba(196,153,90,0.15);
+      padding-top: 0.6rem; margin-top: 0.6rem;
+      line-height: 1.6;
+    }
+
+    /* ===== PALETTE ===== */
+    .palette-wrapper { margin-top: 2.5rem; }
+    .palette-title { margin-bottom: 1rem; }
+    .palette {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .swatch {
+      width: 100px; height: 120px;
+      border-radius: 12px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    @media (min-width: 480px) {
+      .swatch { width: 115px; height: 135px; }
+    }
+
+    /* ===== EXTRA INFO BLOCKS ===== */
+    .extra-info {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) { .extra-info { grid-template-columns: repeat(3, 1fr); } }
+    .info-block {
+      padding: 1.25rem 1.25rem;
+      border-radius: 12px;
+    }
+    .info-block h3 {
+      font-family: var(--display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--bark);
+      margin-bottom: 0.6rem;
+    }
+    .info-block p {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--bark-mid);
+      margin: 0.25rem 0;
+    }
+    .info-block1 { background: #F3E6CF; }
+    .info-block2 { background: #EFE6D6; }
+    .info-block3 { background: #C2A37A; }
+    .info-block3 h3,
+    .info-block3 p { color: var(--bark); }
+
+    /* ===== COUNTDOWN ===== */
+    #countdown {
+      padding: 4rem 1.25rem;
+      background: var(--bark);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    #countdown::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(196,153,90,0.1) 0%, transparent 60%);
+    }
+    .countdown-grain {
+      position: absolute; inset: 0; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .countdown-content { position: relative; z-index: 1; }
+    .countdown-eyebrow {
+      font-size: 0.6rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 0.5rem;
+      font-family: var(--sans);
+    }
+    .countdown-title {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 6vw, 2.5rem);
+      color: var(--cream); font-weight: 300;
+      margin-bottom: 2.5rem; line-height: 1.2;
+    }
+    .countdown-title em { font-style: italic; color: var(--gold-light); }
+    .countdown-units {
+      display: flex; justify-content: center;
+      gap: clamp(1rem, 6vw, 3rem);
+      flex-wrap: nowrap;
+    }
+    .countdown-unit { display: flex; flex-direction: column; align-items: center; }
+    .countdown-num {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 10vw, 4.5rem);
+      color: var(--gold-light); font-weight: 400;
+      line-height: 1; min-width: 2ch; text-align: center;
+      text-shadow: 0 0 20px rgba(196,153,90,0.25);
+    }
+    .countdown-lbl {
+      font-size: 0.45rem;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      font-family: var(--sans);
+    }
+    @media (min-width: 480px) { .countdown-lbl { font-size: 0.55rem; } }
+
+    /* ===== VENUE ===== */
+    #venue { background: var(--cream-dark); }
+    .venue-box {
+      background: white;
+      border-radius: 1.25rem;
+      border: 1px solid rgba(196,153,90,0.15);
+      overflow: hidden;
+      max-width: 520px; margin: 0 auto;
+    }
+    .venue-header {
+      background: var(--bark);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+    }
+    .venue-pin { width: 40px; height: 40px; margin: 0 auto 1rem; }
+    .venue-name {
+      font-family: var(--serif);
+      font-size: 1.3rem; color: var(--cream);
+      font-weight: 400; margin-bottom: 0.35rem;
+    }
+    .venue-addr {
+      font-size: 0.72rem; color: var(--muted);
+      letter-spacing: 0.05em; line-height: 1.6;
+      font-family: var(--sans);
+    }
+    .venue-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    .venue-photo-main {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .venue-photo-main img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .venue-photo-main:hover img { transform: scale(1.04); }
+    .venue-photo-thumb {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+    .venue-photo-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .venue-photo-thumb:hover img { transform: scale(1.06); }
+    .venue-body { padding: 1.5rem; }
+    .venue-info-row {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(196,153,90,0.1);
+    }
+    .venue-info-row:last-of-type { border-bottom: none; }
+    .venue-info-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      border-radius: 50%; background: var(--gold-pale);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+    .venue-info-icon svg {
+      width: 14px; height: 14px;
+      stroke: var(--gold-dark); fill: none; stroke-width: 2;
+    }
+    .venue-info-text { flex: 1; }
+    .venue-info-label {
+      font-size: 0.55rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 600; display: block; margin-bottom: 0.2rem;
+      font-family: var(--sans);
+    }
+    .venue-info-val {
+      font-family: var(--serif);
+      font-size: 0.9rem; color: var(--bark); line-height: 1.5;
+    }
+    .venue-qr-section {
+      border-top: 1px solid rgba(196,153,90,0.15);
+      padding: 1.25rem 1.5rem 1.5rem;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.75rem;
+    }
+    .venue-qr-label {
+      font-size: 0.6rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--muted);
+      font-family: var(--sans);
+    }
+    #qrcode {
+      padding: 8px; background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .venue-map-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--gold);
+      color: var(--bark); font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      font-weight: 600;
+      padding: 0.65rem 1.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      font-family: var(--sans);
+    }
+    .venue-map-btn:hover { background: var(--gold-dark); }
+
+    /* ===== HONORS (ACCORDION) ===== */
+    #honors { background: var(--cream); }
+    .honors-list {
+      display: flex; flex-direction: column;
+      gap: 0.75rem; max-width: 580px; margin: 0 auto;
+    }
+    .honor-item {
+      border: 1px solid rgba(196,153,90,0.2);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+    .honor-item.open { box-shadow: 0 6px 20px rgba(42,31,20,0.15); }
+    .honor-toggle {
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 1.25rem;
+      background: none; border: none; cursor: pointer;
+      text-align: left;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .honor-toggle-left {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .honor-toggle-title {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--cream);
+      font-style: italic; font-weight: 400;
+      display: block;
+    }
+    .honor-toggle-count {
+      font-size: 0.58rem; color: rgba(250,246,239,0.6);
+      letter-spacing: 0.2em; margin-top: 0.1rem; display: block;
+      font-family: var(--sans); text-transform: uppercase;
+    }
+    .honor-chevron {
+      width: 20px; height: 20px; flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .honor-chevron path {
+      stroke: var(--gold-light); fill: none; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .honor-item.open .honor-chevron { transform: rotate(180deg); }
+    .honor-panel {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .honor-panel-inner {
+      padding: 0 1.25rem 1.25rem;
+      border-top: 1px solid rgba(196,153,90,0.2);
+      padding-top: 1rem;
+    }
+    .honor-names-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.4rem 0.75rem;
+    }
+    @media (min-width: 480px) { .honor-names-grid { grid-template-columns: repeat(3, 1fr); } }
+    .honor-name {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: rgba(250,246,239,0.9);
+      padding: 0.35rem 0;
+      border-bottom: 1px dotted rgba(196,153,90,0.25);
+      line-height: 1.4;
+    }
+    .honors-ornament {
+      display: flex; align-items: center; justify-content: center;
+      margin: 2.5rem auto 0;
+      max-width: 360px;
+      gap: 15px;
+    }
+    .honors-ornament .h-line {
+      flex: 1; height: 1px;
+      background: rgba(194,163,122,0.4);
+    }
+    .honors-ornament .h-fleuron {
+      color: #C2A37A;
+      font-size: 22px;
+      font-family: var(--serif);
+      line-height: 1;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-section {
+      background: var(--cream);
+      padding: 3rem 1.25rem 4rem;
+    }
+    .card-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .luxury-card {
+      max-width: 480px;
+      width: 100%;
+      background: var(--cream-dark);
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(46,27,16,0.15), 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    @media (hover: hover) {
+      .luxury-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 28px 56px rgba(46,27,16,0.22);
+      }
+    }
+    .card-inner {
+      padding: 2.5rem 2rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    @media (max-width: 480px) {
+      .card-inner { padding: 2rem 1.5rem; gap: 1.25rem; }
+    }
+    .card-header {
+      text-align: center;
+      border-bottom: 1px solid rgba(194,163,122,0.3);
+      padding-bottom: 1.25rem;
+    }
+    .card-header .subtitle {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--gold-dark);
+      font-style: italic;
+      letter-spacing: 0.02em;
+    }
+    .contact-block {
+      background: #FCF8F2;
+      border-radius: 20px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      border: 1px solid rgba(194,163,122,0.3);
+    }
+    .phone-icon { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    .contact-label {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .phone-number a {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 7vw, 1.9rem);
+      font-weight: 600;
+      color: var(--bark);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s ease;
+      display: block;
+    }
+    .phone-number a:hover { color: var(--gold); }
+    .elegant-note {
+      text-align: center;
+    }
+    .elegant-note p {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .rsvp-button { text-align: center; }
+    .btn-cta {
+      display: inline-block;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--bark);
+      border: 1.5px solid var(--gold);
+      border-radius: 40px;
+      padding: 0.8rem 2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-cta:hover {
+      background: var(--bark);
+      color: var(--cream);
+      border-color: var(--bark);
+    }
+
+    /* ===== CLOSING ===== */
+    #closing {
+      position: relative;
+      background:
+        linear-gradient(rgba(20,15,10,0.58), rgba(20,15,10,0.72)),
+        url('debutant/33.jpg') center 25% / cover no-repeat;
+      padding: 7rem 1.5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .closing-content { position: relative; z-index: 1; }
+    .closing-divider {
+      display: flex; align-items: center;
+      gap: 0.75rem;
+      max-width: 300px; margin: 0 auto 2.5rem;
+    }
+    .closing-divider .line {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,153,90,0.4));
+    }
+    .closing-divider .line:last-child {
+      background: linear-gradient(90deg, rgba(196,153,90,0.4), transparent);
+    }
+    .closing-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 7vw, 3rem);
+      color: var(--cream); font-weight: 300;
+      line-height: 1.3; margin-bottom: 1rem;
+    }
+    .closing-title em { font-style: italic; color: var(--gold-light); }
+    .closing-date {
+      font-size: 0.6rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--muted);
+      font-family: var(--sans);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 1.5rem 1rem;
+      background: #1A1209;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.65rem;
+      color: rgba(168,144,112,0.5);
+      letter-spacing: 0.1em;
+      line-height: 1.8;
+      font-family: var(--sans);
+    }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== KEYFRAMES ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="pre-shimmer"></div>
+    <div class="pre-petals" id="prePetals"></div>
+    <div class="pre-content">
+      <svg class="pre-ornament" viewBox="0 0 48 48">
+        <defs>
+          <linearGradient id="pg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#D9BC8C"/>
+            <stop offset="100%" stop-color="#A68B50"/>
+          </linearGradient>
+        </defs>
+        <g fill="url(#pg)">
+          <circle cx="24" cy="24" r="4"/>
+          <ellipse cx="24" cy="14" rx="3" ry="7" transform="rotate(0 24 24)"/>
+          <ellipse cx="24" cy="14" rx="3" ry="7" transform="rotate(45 24 24)"/>
+          <ellipse cx="24" cy="14" rx="3" ry="7" transform="rotate(90 24 24)"/>
+          <ellipse cx="24" cy="14" rx="3" ry="7" transform="rotate(135 24 24)"/>
+          <ellipse cx="24" cy="14" rx="3" ry="7" transform="rotate(180 24 24)"/>
+          <ellipse cx="24" cy="14" rx="3" ry="7" transform="rotate(225 24 24)"/>
+          <ellipse cx="24" cy="14" rx="3" ry="7" transform="rotate(270 24 24)"/>
+          <ellipse cx="24" cy="14" rx="3" ry="7" transform="rotate(315 24 24)"/>
+        </g>
+      </svg>
+      <h1 class="pre-title">A Decade and Eight</h1>
+      <p class="pre-sub">Ayesha Jaylhyn's 18th Birthday</p>
+      <div class="pre-tap">Tap to Open</div>
+    </div>
+    <div class="pre-progress"><div class="pre-progress-fill" id="preProgressFill"></div></div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">AJ • XVIII</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-menu" id="navMenu" role="navigation">
+    <a href="#details" class="nav-link">Details</a>
+    <a href="#honors" class="nav-link">Honors</a>
+    <a href="#venue" class="nav-link">Venue</a>
+    <a href="#rsvp" class="nav-link">RSVP</a>
+    <p class="nav-menu-date">June 21, 2026 · San Mateo, Isabela</p>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <div class="lightbox-img-wrap">
+      <button class="lightbox-close" id="lbClose" aria-label="Close">✕</button>
+      <button class="lightbox-prev" id="lbPrev" aria-label="Previous">‹</button>
+      <img id="lbImg" src="" alt="Gallery photo">
+      <button class="lightbox-next" id="lbNext" aria-label="Next">›</button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grain"></div>
+    <div class="hero-photo">
+      <img id="heroPhoto" src="debutant/hero.jpg" alt="Ayesha Jaylhyn" onload="this.classList.add('loaded')">
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Sunday · June 21, 2026</p>
+      <div class="hero-monogram">
+        <svg viewBox="0 0 72 72">
+          <defs>
+            <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#D9BC8C"/>
+              <stop offset="100%" stop-color="#A68B50"/>
+            </linearGradient>
+          </defs>
+          <g fill="url(#hg)">
+            <circle cx="36" cy="36" r="5"/>
+            <ellipse cx="36" cy="22" rx="4" ry="10" transform="rotate(0 36 36)"/>
+            <ellipse cx="36" cy="22" rx="4" ry="10" transform="rotate(45 36 36)"/>
+            <ellipse cx="36" cy="22" rx="4" ry="10" transform="rotate(90 36 36)"/>
+            <ellipse cx="36" cy="22" rx="4" ry="10" transform="rotate(135 36 36)"/>
+            <ellipse cx="36" cy="22" rx="4" ry="10" transform="rotate(180 36 36)"/>
+            <ellipse cx="36" cy="22" rx="4" ry="10" transform="rotate(225 36 36)"/>
+            <ellipse cx="36" cy="22" rx="4" ry="10" transform="rotate(270 36 36)"/>
+            <ellipse cx="36" cy="22" rx="4" ry="10" transform="rotate(315 36 36)"/>
+          </g>
+        </svg>
+      </div>
+      <h1 class="hero-title">A Decade<br>and <em>Eight</em></h1>
+      <p class="hero-name">Ayesha Jaylhyn</p>
+      <p class="hero-date">12:30 PM · Lolita's Pavilion &amp; Resort</p>
+      <div class="hero-cta">
+        <a href="#invitation">Join the Celebration</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ORNAMENT DIVIDER -->
+  <div class="ornament-divider">
+    <div class="line"></div>
+    <svg viewBox="0 0 30 30">
+      <g fill="#C4995A" opacity="0.7">
+        <circle cx="15" cy="15" r="2.5"/>
+        <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(0 15 15)"/>
+        <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(60 15 15)"/>
+        <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(120 15 15)"/>
+        <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(180 15 15)"/>
+        <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(240 15 15)"/>
+        <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(300 15 15)"/>
+      </g>
+    </svg>
+    <div class="line"></div>
+  </div>
+
+  <!-- INVITATION -->
+  <section id="invitation">
+    <div class="inv-box reveal">
+      <div class="inv-corner tl"></div>
+      <div class="inv-corner tr"></div>
+      <div class="inv-corner bl"></div>
+      <div class="inv-corner br"></div>
+      <div class="inv-content">
+        <span class="inv-eyebrow">You are Cordially Invited</span>
+        <div class="inv-deco"></div>
+        <p class="inv-body">Together with our families,<br>we invite you to celebrate<br>Ayesha Jaylhyn's 18th birthday</p>
+        <h2 class="inv-name">Ayesha Jaylhyn</h2>
+        <div class="inv-deco"></div>
+        <p class="inv-closing">Your presence will make this milestone<br>truly unforgettable.</p>
+        <div class="inv-seal"><span>XVIII</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC PLAYER -->
+  <section id="music-player">
+    <div class="music-card reveal">
+      <div class="music-disc-wrap" id="discWrap">
+        <div class="music-disc" id="musicDisc"></div>
+      </div>
+      <div class="music-status">
+        <div class="music-pulse" id="musicPulse"></div>
+        <span class="music-hint" id="musicHint">Touch the disc to begin</span>
+      </div>
+    </div>
+    <audio id="bgMusic" preload="auto" loop>
+      <source src="music/YNB.mp3" type="audio/mpeg">
+    </audio>
+  </section>
+
+  <!-- SIGNATURE GALLERY -->
+  <section id="signature-gallery">
+    <div class="signature-grain"></div>
+    <div class="signature-container fade-in-up">
+      <div class="signature-masterpiece" data-gallery="signature" data-index="0">
+        <img src="debutant/2.jpg" alt="Ayesha Jaylhyn — Debut Portrait" loading="lazy">
+        <div class="signature-masterpiece-caption">
+          <span>✦ XVIII ✦</span>
+        </div>
+      </div>
+      <div class="signature-strip-grid">
+        <div class="signature-strip-item" data-gallery="signature" data-index="1">
+          <div class="strip-inner">
+            <img src="debutant/4.jpg" alt="Debut photo 4" loading="lazy">
+            <div class="strip-number"></div>
+          </div>
+        </div>
+        <div class="signature-strip-item" data-gallery="signature" data-index="2">
+          <div class="strip-inner">
+            <img src="debutant/5.jpg" alt="Debut photo 5" loading="lazy">
+            <div class="strip-number"></div>
+          </div>
+        </div>
+        <div class="signature-strip-item" data-gallery="signature" data-index="3">
+          <div class="strip-inner">
+            <img src="debutant/6.jpg" alt="Debut photo 6" loading="lazy">
+            <div class="strip-number"></div>
+          </div>
+        </div>
+      </div>
+      <div class="signature-footer">
+        <span>The Debut Collection</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section id="details" class="section">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Celebration Details</span>
+      <h2 class="section-title">About the <em>Event</em></h2>
+    </div>
+    <div class="details-grid">
+      <div class="detail-card reveal">
+        <div class="detail-card-accent"></div>
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
+        </div>
+        <span class="detail-label">Date</span>
+        <p class="detail-value">Sunday&#10;June 21, 2026</p>
+        <p class="detail-sub">Doors open at 12:30 PM</p>
+      </div>
+      <div class="detail-card reveal">
+        <div class="detail-card-accent"></div>
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <span class="detail-label">Time</span>
+        <p class="detail-value">12:30 PM&#10;onwards</p>
+        <p class="detail-sub">Celebration until late evening</p>
+      </div>
+      <div class="detail-card reveal">
+        <div class="detail-card-accent"></div>
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <span class="detail-label">Venue</span>
+        <p class="detail-value">Lolita's Pavilion&#10;&amp; Resort</p>
+        <p class="detail-sub">Daramuangan Sur, San Mateo, Isabela</p>
+      </div>
+      <div class="detail-card reveal">
+        <div class="detail-card-accent"></div>
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
+        </div>
+        <span class="detail-label">Dress Code</span>
+        <p class="detail-value">Nude-Colored&#10;Attire</p>
+        <p class="detail-sub">Gentlemen: Polo / Long sleeves · Ladies: Dresses preferred</p>
+      </div>
+      <div class="detail-card reveal">
+        <div class="detail-card-accent"></div>
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 12v10H4V12M2 7h20v5H2z"/><line x1="12" y1="22" x2="12" y2="17"/><path d="M12 7V3a2 2 0 0 0-4 0v4M12 7V3a2 2 0 0 1 4 0v4"/></svg>
+        </div>
+        <span class="detail-label">Gift</span>
+        <p class="detail-value">Your presence&#10;is the greatest gift</p>
+        <p class="detail-sub">Monetary blessings are appreciated</p>
+      </div>
+      <div class="detail-card reveal">
+        <div class="detail-card-accent"></div>
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <span class="detail-label">Reminder</span>
+        <p class="detail-value">Strictly No&#10;Latecomers</p>
+        <p class="detail-sub">Please stay until the party ends</p>
+      </div>
+    </div>
+
+    <div class="section-header reveal" style="margin-top: 3.5rem; margin-bottom: 1rem;">
+      <h2 class="section-title palette-title">Color <em>Palette</em></h2>
+    </div>
+    <div class="palette-wrapper reveal">
+      <div class="palette">
+        <div class="swatch" style="background:#F3E6CF;"></div>
+        <div class="swatch" style="background:#EFE6D6;"></div>
+        <div class="swatch" style="background:#C2A37A;"></div>
+        <div class="swatch" style="background:#8C6A43;"></div>
+        <div class="swatch" style="background:#2E1B10;"></div>
+      </div>
+    </div>
+
+    <div class="extra-info reveal">
+      <div class="info-block info-block1">
+        <h3>Important Reminder</h3>
+        <p>Strictly no latecomers. All guests are kindly requested to stay until the party ends.</p>
+      </div>
+      <div class="info-block info-block2">
+        <h3>Gift</h3>
+        <p>Your presence on my special day is the greatest gift I could ask for. Monetary blessings are warmly appreciated.</p>
+      </div>
+      
+      <div class="info-block info-block3">
+        <h3>Dress Code</h3>
+        <p>We kindly request our guests to wear nude-colored attire inspired by the palette shown above. Please choose plain and simple outfits and avoid floral or heavily patterned designs to keep the look elegant and clean.</p>
+          <br>
+        <p>Gentlemen: Long-sleeved polo is preffered.</p>
+        <p>Ladies: Dresses are highly encouraged; elegant formal attire is also welcome.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section id="countdown">
+    <div class="countdown-grain"></div>
+    <div class="countdown-content">
+      <span class="countdown-eyebrow">Counting the Days</span>
+      <h2 class="countdown-title">Until the <em>Celebration</em></h2>
+      <div class="countdown-units">
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-days">00</span>
+          <span class="countdown-lbl">Days</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-hours">00</span>
+          <span class="countdown-lbl">Hours</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-minutes">00</span>
+          <span class="countdown-lbl">Minutes</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-seconds">00</span>
+          <span class="countdown-lbl">Seconds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section id="venue" class="section">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Location &amp; Directions</span>
+      <h2 class="section-title">Find the <em>Venue</em></h2>
+    </div>
+    <div class="venue-box reveal">
+      <div class="venue-header">
+        <div class="venue-pin">
+          <svg viewBox="0 0 40 40" fill="none">
+            <path d="M20 4C13.4 4 8 9.4 8 16c0 9 12 20 12 20s12-11 12-20c0-6.6-5.4-12-12-12z" fill="rgba(196,153,90,0.25)" stroke="#C4995A" stroke-width="1.5"/>
+            <circle cx="20" cy="16" r="4" fill="#C4995A"/>
+          </svg>
+        </div>
+        <h3 class="venue-name">Lolita's Pavilion &amp; Resort</h3>
+        <p class="venue-addr">Daramuangan Sur, San Mateo, Isabela</p>
+      </div>
+      <div class="venue-photos">
+        <div class="venue-photo-main" data-gallery="venue" data-index="0">
+          <img src="venue/rec.webp" alt="Lolita's Pavilion front" loading="lazy">
+        </div>
+        <div class="venue-photo-thumb" data-gallery="venue" data-index="1">
+          <img src="venue/pool.webp" alt="Swimming pool" loading="lazy">
+        </div>
+        <div class="venue-photo-thumb" data-gallery="venue" data-index="2">
+          <img src="venue/pool2.webp" alt="Pool area" loading="lazy">
+        </div>
+      </div>
+      <div class="venue-body">
+        <div class="venue-info-row">
+          <div class="venue-info-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div class="venue-info-text">
+            <span class="venue-info-label">Getting There</span>
+            <p class="venue-info-val">Located in San Mateo, Isabela. Accessible via national highway. Parking available on-site.</p>
+          </div>
+        </div>
+        <div class="venue-info-row">
+          <div class="venue-info-icon">
+            <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          </div>
+          <div class="venue-info-text">
+            <span class="venue-info-label">Landmarks</span>
+            <p class="venue-info-val">Near San Mateo Municipal Hall. Follow signs to Lolita's Pavilion &amp; Resort.</p>
+          </div>
+        </div>
+      </div>
+      <div class="venue-qr-section">
+        <span class="venue-qr-label">Scan for directions</span>
+        <div id="qrcode"></div>
+        <a href="https://maps.app.goo.gl/oMw7yxD5HxnFcHgX6" target="_blank" rel="noopener" class="venue-map-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          Open in Maps
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONORS -->
+  <section id="honors" class="section">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">The 18th Celebration</span>
+      <h2 class="section-title">Honors &amp; <em>Traditions</em></h2>
+    </div>
+
+    <div class="honors-list reveal" id="honorsList">
+
+      <!-- 18 ROSES -->
+      <div class="honor-item" style="background: linear-gradient(rgba(20,15,10,0.58),rgba(20,15,10,0.58)) center 25%/cover, url('debutant/7.jpg') center 25%/cover;">
+        <button class="honor-toggle" data-honor="roses">
+          <div class="honor-toggle-left">
+            <div>
+              <span class="honor-toggle-title">18 Roses</span>
+              <span class="honor-toggle-count">Gentlemen</span>
+            </div>
+          </div>
+          <svg class="honor-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="honor-panel" id="panel-roses">
+          <div class="honor-panel-inner">
+            <div class="honor-names-grid">
+              <div class="honor-name">Ralph Cesar Balintag</div>
+              <div class="honor-name">Jayson Karl Fabros</div>
+              <div class="honor-name">Edward Azucena</div>
+              <div class="honor-name">Leinar Agpaoa</div>
+              <div class="honor-name">Keith Alphonse Chua</div>
+              <div class="honor-name">Jaden Joseph Lim</div>
+              <div class="honor-name">Justine Mark Eala</div>
+              <div class="honor-name">Carl Anthony Oania</div>
+              <div class="honor-name">Simeon Jhed Tanco</div>
+              <div class="honor-name">Orly Tolentino</div>
+              <div class="honor-name">Joshua Gagarin</div>
+              <div class="honor-name">Amir Jireh Torres</div>
+              <div class="honor-name">Justine Kyle Lumogdang</div>
+              <div class="honor-name">Baron Dwayne Lumogdang</div>
+              <div class="honor-name">Papa Arnel Gagarin</div>
+              <div class="honor-name">John Carlo Delacruz</div>
+              <div class="honor-name">Daddy Severo Gagarin</div>
+              <div class="honor-name">Papa Jerry Lumogdang</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 CANDLES -->
+      <div class="honor-item" style="background: linear-gradient(rgba(20,15,10,0.58),rgba(20,15,10,0.58)) center 25%/cover, url('debutant/1.jpg') center 25%/cover;">
+        <button class="honor-toggle" data-honor="candles">
+          <div class="honor-toggle-left">
+            <div>
+              <span class="honor-toggle-title">18 Candles</span>
+              <span class="honor-toggle-count">Ladies</span>
+            </div>
+          </div>
+          <svg class="honor-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="honor-panel" id="panel-candles">
+          <div class="honor-panel-inner">
+            <div class="honor-names-grid">
+              <div class="honor-name">Tita Maribel Gagarin</div>
+              <div class="honor-name">Kenji May Fabros</div>
+              <div class="honor-name">Martha Juliannah Lumogdang</div>
+              <div class="honor-name">Cristal Joy Landayan</div>
+              <div class="honor-name">Xyrene Joy Valdez</div>
+              <div class="honor-name">Aliyah Grace Rumbaoa</div>
+              <div class="honor-name">Ashley Joy Alindayu</div>
+              <div class="honor-name">Jeramie Noora</div>
+              <div class="honor-name">Anica Kaye Ramos</div>
+              <div class="honor-name">Herald Mae Cagayan</div>
+              <div class="honor-name">Elaijah Christelle Pagkalinawan</div>
+              <div class="honor-name">Raye Kraissantha Torres</div>
+              <div class="honor-name">Angela Torres</div>
+              <div class="honor-name">Joann Faith Lumogdang</div>
+              <div class="honor-name">Ara Danniella Torres</div>
+              <div class="honor-name">Mariel Francisco</div>
+              <div class="honor-name">Rose Ann Mae Cabudol</div>
+              <div class="honor-name">Lyka Rozel Magbanua</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 BLUE BILLS -->
+      <div class="honor-item" style="background: linear-gradient(rgba(20,15,10,0.58),rgba(20,15,10,0.58)) center 25%/cover, url('debutant/11.jpg') center 25%/cover;">
+        <button class="honor-toggle" data-honor="bluebills">
+          <div class="honor-toggle-left">
+            <div>
+              <span class="honor-toggle-title">18 Blue Bills</span>
+              <span class="honor-toggle-count">Beloved</span>
+            </div>
+          </div>
+          <svg class="honor-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="honor-panel" id="panel-bluebills">
+          <div class="honor-panel-inner">
+            <div class="honor-names-grid">
+              <div class="honor-name">Papa Arnel Gagarin</div>
+              <div class="honor-name">Tito Ceasar Balintag</div>
+              <div class="honor-name">Tito Francisco Delacruz</div>
+              <div class="honor-name">Tito Domenic Cudal</div>
+              <div class="honor-name">Tito Alvin Batac</div>
+              <div class="honor-name">Tita Evelyn Azucena</div>
+              <div class="honor-name">Tita Marivic Francisco</div>
+              <div class="honor-name">Ninang Charlotte Logan</div>
+              <div class="honor-name">Ninong Jayson Isla</div>
+              <div class="honor-name">Ninong Reygan Gagarin</div>
+              <div class="honor-name">Ninang Marissa Gragasin</div>
+              <div class="honor-name">Tita Arsenia Cordova</div>
+              <div class="honor-name">Ninang Analyn Ancheta</div>
+              <div class="honor-name">Tito Danie Lumogdang</div>
+              <div class="honor-name">Tito Restituto Lumogdang</div>
+              <div class="honor-name">Tito Hilbert Lumogdang</div>
+              <div class="honor-name">Tita Edna Torres</div>
+              <div class="honor-name">Tito Elmer Lumogdang</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 SHOTS -->
+      <div class="honor-item" style="background: linear-gradient(rgba(20,15,10,0.58),rgba(20,15,10,0.58)) center 25%/cover, url('debutant/8.jpg') center 25%/cover;">
+        <button class="honor-toggle" data-honor="shots">
+          <div class="honor-toggle-left">
+            <div>
+              <span class="honor-toggle-title">18 Shots</span>
+              <span class="honor-toggle-count">Participants</span>
+            </div>
+          </div>
+          <svg class="honor-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="honor-panel" id="panel-shots">
+          <div class="honor-panel-inner">
+            <div class="honor-names-grid">
+              <div class="honor-name">Jomrei Tan</div>
+              <div class="honor-name">Jairen Topiño</div>
+              <div class="honor-name">Emmanuel Manahan</div>
+              <div class="honor-name">Juaquin Cervantes</div>
+              <div class="honor-name">Raphael Constantino</div>
+              <div class="honor-name">Terence Tolentino</div>
+              <div class="honor-name">Jannsen Lucero</div>
+              <div class="honor-name">Exekiel Reganit</div>
+              <div class="honor-name">Kyle Realin</div>
+              <div class="honor-name">John Torres</div>
+              <div class="honor-name">Eril Vista</div>
+              <div class="honor-name">Aaron James Lumogdang</div>
+              <div class="honor-name">Reymark Fernando</div>
+              <div class="honor-name">Ralph Balintag</div>
+              <div class="honor-name">Levi Lhoy Manaois</div>
+              <div class="honor-name">Jerald Gagarin</div>
+              <div class="honor-name">Mark Anthony Gagarin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 TREASURES -->
+      <div class="honor-item" style="background: linear-gradient(rgba(20,15,10,0.58),rgba(20,15,10,0.58)) center 25%/cover, url('debutant/9.jpg') center 25%/cover;">
+        <button class="honor-toggle" data-honor="treasures">
+          <div class="honor-toggle-left">
+            <div>
+              <span class="honor-toggle-title">18 Treasures</span>
+              <span class="honor-toggle-count">Cherished</span>
+            </div>
+          </div>
+          <svg class="honor-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="honor-panel" id="panel-treasures">
+          <div class="honor-panel-inner">
+            <div class="honor-names-grid">
+              <div class="honor-name">Katrice Pagulayan</div>
+              <div class="honor-name">Jolina Carlos</div>
+              <div class="honor-name">Erin Vista</div>
+              <div class="honor-name">Ahira Mae Anne Lumogdang</div>
+              <div class="honor-name">Abigail Torres</div>
+              <div class="honor-name">Czirinel Garo</div>
+              <div class="honor-name">Cristal Cudal</div>
+              <div class="honor-name">Jolien Reponte</div>
+              <div class="honor-name">Jashmine Dumo</div>
+              <div class="honor-name">Keanne Mangoba</div>
+              <div class="honor-name">Bianca Allyson Laviña</div>
+              <div class="honor-name">Nicole Rhaine Reyes</div>
+              <div class="honor-name">Karen Joy Sarsuela</div>
+              <div class="honor-name">Kyla Cabudol</div>
+              <div class="honor-name">Abegail Dela Cruz</div>
+              <div class="honor-name">Keziah Charmel Gagarin</div>
+              <div class="honor-name">Myra Claire Nicolas</div>
+              <div class="honor-name">Samantha Fiona Gagarin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 TOKENS OF ELEGANCE -->
+      <div class="honor-item" style="background: linear-gradient(rgba(20,15,10,0.58),rgba(20,15,10,0.58)) center 25%/cover, url('debutant/10.jpg') center 25%/cover;">
+        <button class="honor-toggle" data-honor="tokens">
+          <div class="honor-toggle-left">
+            <div>
+              <span class="honor-toggle-title">18 Tokens of Elegance</span>
+              <span class="honor-toggle-count">Honored</span>
+            </div>
+          </div>
+          <svg class="honor-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="honor-panel" id="panel-tokens">
+          <div class="honor-panel-inner">
+            <div class="honor-names-grid">
+              <div class="honor-name">Mama Maricel Gagarin</div>
+              <div class="honor-name">Ninang Elvie Velasco</div>
+              <div class="honor-name">Lola Elizabeth Mangoba</div>
+              <div class="honor-name">Lola Letty Millo</div>
+              <div class="honor-name">Ninang Annabelle Lumogdang</div>
+              <div class="honor-name">Tita Beth Lumogdang</div>
+              <div class="honor-name">Tita Fe Lumogdang</div>
+              <div class="honor-name">Jezar Joy Balintag</div>
+              <div class="honor-name">Cleire Conception</div>
+              <div class="honor-name">Rachelle Francisco</div>
+              <div class="honor-name">Jessamae Legaspi</div>
+              <div class="honor-name">Ela Mae Agustin</div>
+              <div class="honor-name">Tita Carlyn Gagarin</div>
+              <div class="honor-name">Tita Irene Agonoy</div>
+              <div class="honor-name">Lady Anne Manaois</div>
+              <div class="honor-name">Tita Shialy Mar Talal</div>
+              <div class="honor-name">Ninang Jescel Reganit</div>
+              <div class="honor-name">Ninong Danny Bala</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.honors-list -->
+
+    <div class="honors-ornament">
+      <span class="h-line"></span>
+      <span class="h-fleuron">❦</span>
+      <span class="h-line"></span>
+    </div>
+
+
+
+  </section>
+
+    <p style="font-family: 'Tenor Sans', 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; margin: 0; text-align: center; color: #A0522D;">
+      Let us know if you're coming!
+    </p>
+    <div class="honors-ornament">
+      <span class="h-line"></span>
+      <span class="h-fleuron">❦</span>
+      <span class="h-line"></span>
+    </div>
+  <!-- CONTACT / RSVP -->
+  <section class="contact-section" id="rsvp">
+    <div class="card-container">
+      <div class="luxury-card">
+        <div class="card-inner">
+          <div class="card-header">
+            <p class="subtitle">A Decade and Eight &nbsp;·&nbsp; Ayesha Jaylhyn</p>
+          </div>
+          <div class="contact-block">
+            <div class="phone-icon"></div>
+            <span class="contact-label">Call or Text for RSVP</span>
+            <div class="phone-number">
+              <a href="tel:+639171234567">0965 557 39047</a>
+            </div>
+          </div>
+          <div class="elegant-note">
+            <p>We have joyfully reserved seats for you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section id="closing">
+    <div class="closing-content">
+      <div class="closing-divider">
+        <div class="line"></div>
+        <svg width="20" height="20" viewBox="0 0 30 30">
+          <g fill="#C4995A" opacity="0.6">
+            <circle cx="15" cy="15" r="2"/>
+            <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(0 15 15)"/>
+            <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(60 15 15)"/>
+            <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(120 15 15)"/>
+            <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(180 15 15)"/>
+            <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(240 15 15)"/>
+            <ellipse cx="15" cy="8" rx="2" ry="5" transform="rotate(300 15 15)"/>
+          </g>
+        </svg>
+        <div class="line" style="background:linear-gradient(90deg,rgba(196,153,90,0.4),transparent)"></div>
+      </div>
+      <h2 class="closing-title">With love and <em>gratitude</em>,<br>Ayesha Jaylhyn</h2>
+      <p class="closing-date" style="margin-top:1rem">June 21, 2026 · San Mateo, Isabela</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Made with love for Ayesha Jaylhyn · 2026<br>
+    <span style="font-size:0.55rem;opacity:0.6">Lolita's Pavilion &amp; Resort · San Mateo, Isabela</span></p>
+  </footer>
+
+  <script>
+    /* ---- PRELOADER ---- */
+    (function () {
+      const el   = document.getElementById('preloader');
+      const fill = document.getElementById('preProgressFill');
+      const petalsContainer = document.getElementById('prePetals');
+      let prog = 0;
+
+      for (let i = 0; i < 14; i++) {
+        const p = document.createElement('div');
+        p.className = 'pre-petal';
+        p.style.left              = Math.random() * 100 + '%';
+        p.style.animationDuration = (8 + Math.random() * 6) + 's';
+        p.style.animationDelay    = (Math.random() * 8) + 's';
+        p.style.transform         = 'rotate(' + Math.random() * 360 + 'deg)';
+        petalsContainer.appendChild(p);
+      }
+
+      const interval = setInterval(() => {
+        prog += 1.5;
+        fill.style.width = Math.min(prog, 100) + '%';
+        if (prog >= 100) clearInterval(interval);
+      }, 30);
+
+      el.addEventListener('click', () => {
+        if (prog >= 100) {
+          el.classList.add('fade-out');
+          document.body.style.overflow = '';
+        }
+      });
+      document.body.style.overflow = 'hidden';
+    })();
+
+    /* ---- NAV ---- */
+    const nav       = document.getElementById('nav');
+    const hamburger = document.getElementById('navHamburger');
+    const navMenu   = document.getElementById('navMenu');
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* ---- SMOOTH SCROLL ---- */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    /* ---- COUNTDOWN ---- */
+    const target = new Date('2026-06-21T12:30:00').getTime();
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const diff = target - Date.now();
+      if (diff > 0) {
+        document.getElementById('cd-days').textContent    = pad(Math.floor(diff / 86400000));
+        document.getElementById('cd-hours').textContent   = pad(Math.floor((diff % 86400000) / 3600000));
+        document.getElementById('cd-minutes').textContent = pad(Math.floor((diff % 3600000) / 60000));
+        document.getElementById('cd-seconds').textContent = pad(Math.floor((diff % 60000) / 1000));
+      } else {
+        ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(id => {
+          document.getElementById(id).textContent = '00';
+        });
+      }
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    /* ---- ACCORDION ---- */
+    document.querySelectorAll('.honor-toggle').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const key    = this.dataset.honor;
+        const panel  = document.getElementById('panel-' + key);
+        const item   = this.closest('.honor-item');
+        const isOpen = item.classList.contains('open');
+
+        // close all
+        document.querySelectorAll('.honor-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.honor-panel').style.maxHeight = '0';
+        });
+
+        // open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    });
+
+    /* ---- LIGHTBOX ---- */
+    const galleries = {
+      signature: [
+        'debutant/2.jpg',
+        'debutant/4.jpg',
+        'debutant/5.jpg',
+        'debutant/6.jpg'
+      ],
+      venue: [
+        'venue/rec.webp',
+        'venue/pool.webp',
+        'venue/pool2.webp'
+      ]
+    };
+
+    let currentGallery = null;
+    let currentIndex   = 0;
+
+    const lightbox = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lbImg');
+
+    function openLightbox(gallery, index) {
+      currentGallery = gallery;
+      currentIndex   = index;
+      lbImg.src      = galleries[gallery][index];
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function showPrev() {
+      const arr = galleries[currentGallery];
+      currentIndex = (currentIndex - 1 + arr.length) % arr.length;
+      lbImg.src = arr[currentIndex];
+    }
+
+    function showNext() {
+      const arr = galleries[currentGallery];
+      currentIndex = (currentIndex + 1) % arr.length;
+      lbImg.src = arr[currentIndex];
+    }
+
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbPrev').addEventListener('click', showPrev);
+    document.getElementById('lbNext').addEventListener('click', showNext);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')      closeLightbox();
+      if (e.key === 'ArrowLeft')   showPrev();
+      if (e.key === 'ArrowRight')  showNext();
+    });
+
+    // Touch swipe for lightbox
+    let lbTouchX = null;
+    lightbox.addEventListener('touchstart', e => { lbTouchX = e.touches[0].clientX; }, { passive: true });
+    lightbox.addEventListener('touchend', e => {
+      if (lbTouchX === null) return;
+      const dx = e.changedTouches[0].clientX - lbTouchX;
+      if (Math.abs(dx) > 50) { dx < 0 ? showNext() : showPrev(); }
+      lbTouchX = null;
+    }, { passive: true });
+
+    // Wire up all gallery triggers
+    document.querySelectorAll('[data-gallery]').forEach(el => {
+      el.addEventListener('click', function () {
+        openLightbox(this.dataset.gallery, parseInt(this.dataset.index, 10));
+      });
+    });
+
+    /* ---- MUSIC PLAYER ---- */
+    const audio = document.getElementById('bgMusic');
+    const disc  = document.getElementById('musicDisc');
+    const hint  = document.getElementById('musicHint');
+    let isPlaying = false;
+
+    function setPlaying(state) {
+      isPlaying = state;
+      disc.classList.toggle('playing', state);
+      hint.textContent = state ? '♪ our melody is playing ♪' : 'Touch the disc to begin';
+    }
+
+    document.getElementById('discWrap').addEventListener('click', () => {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play()
+          .then(() => setPlaying(true))
+          .catch(() => { hint.textContent = '🎵 Tap again to play'; });
+      }
+    });
+
+    audio.addEventListener('play',  () => setPlaying(true));
+    audio.addEventListener('pause', () => setPlaying(false));
+    audio.volume = 0.6;
+
+    /* ---- REVEAL ON SCROLL ---- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer  = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // stagger child cards
+          entry.target.querySelectorAll('.detail-card').forEach((c, i) => {
+            c.style.transitionDelay = (i * 0.06) + 's';
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ---- QR CODE ---- */
+    try {
+      new QRCode(document.getElementById('qrcode'), {
+        text: 'https://maps.app.goo.gl/oMw7yxD5HxnFcHgX6',
+        width: 110,
+        height: 110
+      });
+    } catch (e) { /* QR lib may not be loaded */ }
+  </script>
+</body>
+</html>
