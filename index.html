@@ -296,17 +296,28 @@
       color: var(--gold-light);
       font-weight: 400;
     }
-    .hero-name {
-      font-family: var(--serif);
-      font-size: clamp(1.5rem, 5vw, 2.5rem);
-      color: var(--nude);
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      font-weight: 300;
-      margin-bottom: 0.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.8s forwards;
-    }
+.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(4rem, 10vw, 8rem);
+
+  color: var(--nude);
+  text-transform: uppercase;
+
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  line-height: 0.95;
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.15),
+    0 10px 30px rgba(0, 0, 0, 0.12);
+
+  margin-bottom: 1rem;
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
+}
     .hero-date {
       font-family: var(--sans);
       font-size: 0.65rem;
